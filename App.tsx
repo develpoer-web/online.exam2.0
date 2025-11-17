@@ -1,13 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { Page, StudentAnswers } from './types';
-import { useExamConfig } from './hooks/useExamConfig';
-import StudentHome from './components/StudentHome';
-import AdminLogin from './components/AdminLogin';
-import AdminDashboard from './components/AdminDashboard';
-import ExamScreen from './components/ExamScreen';
-import ResultScreen from './components/ResultScreen';
-import ReviewScreen from './components/ReviewScreen';
+import { useExamConfig } from 'useExamConfig';
+import StudentHome from 'StudentHome';
+import AdminLogin from 'AdminLogin';
+import AdminDashboard from 'AdminDashboard';
+import ExamScreen from 'ExamScreen';
+import ResultScreen from 'ResultScreen';
+import ReviewScreen from 'ReviewScreen';
 
 const App: React.FC = () => {
   const [page, setPage] = useState<Page>('studentHome');
