@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-to-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neon Glitch Exam</title>
+
+    <!-- PWA Manifest & Theme -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d0221">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+      @keyframes background-pan {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      body {
+        font-family: 'Share Tech Mono', monospace;
+        color: #f0f0f0;
+        background: linear-gradient(-45deg, #0d0221, #0c001f, #24003d, #1a0a2e);
+        background-size: 400% 400%;
+        animation: background-pan 20s ease infinite;
+      }
+      .font-orbitron {
+        font-family: 'Orbitron', sans-serif;
+      }
+      
+      @keyframes glitch {
+        0% { transform: translate(0); }
+        20% { transform: translate(-3px, 3px); }
+        40% { transform: translate(-3px, -3px); }
+        60% { transform: translate(3px, 3px); }
+        80% { transform: translate(3px, -3px); }
+        100% { transform: translate(0); }
+      }
+
+      .glitch-text {
+        position: relative;
+        text-shadow: 0.05em 0 0 #00fffc, -0.025em -0.05em 0 #fc00ff, 0.025em 0.05em 0 #fffc00;
+        animation: glitch 500ms infinite;
+      }
+
+      .glitch-text::before,
+      .glitch-text::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+      }
+
+      .glitch-text::before {
+        left: 2px;
+        text-shadow: -2px 0 #fc00ff;
+        animation: glitch-anim-2 3s infinite linear alternate-reverse;
+      }
+
+      .glitch-text::after {
+        left: -2px;
+        text-shadow: -2px 0 #00fffc, 2px 2px #fffc00;
+        animation: glitch-anim-1 2s infinite linear alternate-reverse;
+      }
+
+      @keyframes glitch-anim-1 {
+        0%, 100% { clip-path: inset(10% 0 80% 0); }
+        20% { clip-path: inset(50% 0 10% 0); }
+        40% { clip-path: inset(90% 0 2% 0); }
+        60% { clip-path: inset(25% 0 70% 0); }
+        80% { clip-path: inset(0 0 95% 0); }
+      }
+
+      @keyframes glitch-anim-2 {
+        0%, 100% { clip-path: inset(80% 0 5% 0); }
+        20% { clip-path: inset(15% 0 60% 0); }
+        40% { clip-path: inset(0 0 90% 0); }
+        60% { clip-path: inset(70% 0 20% 0); }
+        80% { clip-path: inset(40% 0 45% 0); }
+      }
+
+      .neon-glow-cyan {
+        box-shadow: 0 0 5px #00fffc, 0 0 10px #00fffc, 0 0 20px #00fffc, 0 0 40px #00fffc;
+      }
+      .neon-glow-magenta {
+        box-shadow: 0 0 5px #fc00ff, 0 0 10px #fc00ff, 0 0 20px #fc00ff, 0 0 40px #fc00ff;
+      }
+      .text-glow-cyan {
+        text-shadow: 0 0 2px #00fffc, 0 0 5px #00fffc, 0 0 10px #00fffc;
+      }
+       .text-glow-magenta {
+        text-shadow: 0 0 2px #fc00ff, 0 0 5px #fc00ff, 0 0 10px #fc00ff;
+      }
+
+      .btn-neon {
+        transition: all 0.2s ease-in-out;
+      }
+      .btn-neon:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 8px #00fffc, 0 0 15px #00fffc, 0 0 30px #00fffc;
+      }
+
+      /* Custom scrollbar for webkit browsers */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0d0221;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #fc00ff;
+        border-radius: 4px;
+        box-shadow: 0 0 5px #fc00ff;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #ff40ff;
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "webworker": "https://aistudiocdn.com/webworker@^0.8.4",
+    "vite": "https://aistudiocdn.com/vite@^7.2.2",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
